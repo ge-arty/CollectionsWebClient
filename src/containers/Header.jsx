@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,9 +9,15 @@ export default function Header() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
+    <nav
+      style={{
+        borderBottom: "1px solid #fff",
+        boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
+      }}
+      className="navbar navbar-expand-lg navbar-dark pb-4 pt-4"
+    >
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <a href="/" className="navbar-brand">
           myCollections
         </a>
         <button
@@ -31,24 +38,24 @@ export default function Header() {
         >
           <ul className="navbar-nav w-50 d-flex justify-content-evenly">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <NavLink className="nav-link" to="/">
                 Explore
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about">
+              <NavLink className="nav-link" to="/myCollection">
                 My Collection
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <NavLink className="nav-link" to="/login">
                 Login
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <NavLink className="nav-link" to="/register">
                 Register
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contact">
