@@ -3,22 +3,26 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [accountInfo, setAccountInfo] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    setAccountInfo({ ...accountInfo, email: e.target.value });
   };
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+    setAccountInfo({ ...accountInfo, password: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setEmail("");
-    setPassword("");
+    setAccountInfo({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -34,27 +38,30 @@ export default function LoginForm() {
       <h1 style={{ color: "#fff" }}>Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Email</label>
+          <label style={{ color: "#FFF" }}>Email</label>
           <input
             type="email"
             className="form-control"
             placeholder="Enter email"
-            value={email}
+            value={accountInfo.email}
             onChange={handleEmailChange}
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label style={{ color: "#FFF" }}>Password</label>
           <input
             type="password"
             className="form-control"
             placeholder="Enter password"
-            value={password}
+            value={accountInfo.password}
             onChange={handlePasswordChange}
           />
         </div>
         <p style={{ color: "red" }}>Here will be Error Message!</p>
         <div className="d-grid gap-2">
+          <button type="submit" className="btn btn-primary">
+            Sign In
+          </button>
           <NavLink
             to="/register"
             className="btn btn-success"
@@ -62,9 +69,6 @@ export default function LoginForm() {
           >
             Sign up
           </NavLink>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
         </div>
       </form>
     </div>
