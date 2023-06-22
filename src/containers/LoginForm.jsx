@@ -8,14 +8,6 @@ export default function LoginForm() {
     password: "",
   });
 
-  const handleEmailChange = (e) => {
-    setAccountInfo({ ...accountInfo, email: e.target.value });
-  };
-
-  const handlePasswordChange = (e) => {
-    setAccountInfo({ ...accountInfo, password: e.target.value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -36,25 +28,29 @@ export default function LoginForm() {
       }}
     >
       <h1 style={{ color: "#fff" }}>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
+      <form style={{ width: "300px" }} onSubmit={handleSubmit}>
+        <div style={{ marginBottom: "10px" }} className="form-group">
           <label style={{ color: "#FFF" }}>Email</label>
           <input
             type="email"
             className="form-control"
             placeholder="Enter email"
             value={accountInfo.email}
-            onChange={handleEmailChange}
+            onChange={(e) =>
+              setAccountInfo({ ...accountInfo, email: e.target.value })
+            }
           />
         </div>
-        <div className="form-group">
+        <div style={{ marginBottom: "10px" }} className="form-group">
           <label style={{ color: "#FFF" }}>Password</label>
           <input
             type="password"
             className="form-control"
             placeholder="Enter password"
             value={accountInfo.password}
-            onChange={handlePasswordChange}
+            onChange={(e) =>
+              setAccountInfo({ ...accountInfo, password: e.target.value })
+            }
           />
         </div>
         <p style={{ color: "red" }}>Here will be Error Message!</p>

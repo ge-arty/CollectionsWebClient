@@ -7,7 +7,7 @@ import PersonalCollection from "./PersonalCollection";
 
 export default function Content() {
   return (
-    <div>
+    <div className="container ">
       <Routes>
         <Route exact path="/" element={<Explore />} />
         <Route path="/login" element={<LoginForm />} />
