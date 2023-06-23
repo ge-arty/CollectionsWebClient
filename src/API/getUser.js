@@ -10,7 +10,6 @@ export default async function getUser(userId, token) {
         },
       }
     );
-    console.log(userId, `token ${token}`);
     if (response.ok) {
       const user = await response.json();
       console.log(user);

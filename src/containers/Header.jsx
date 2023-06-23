@@ -9,7 +9,7 @@ export default function Header({ isLogged, token, userId, setIsLogged }) {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  console.log(userId, `token ${token}`);
+
   return (
     <nav
       style={{
