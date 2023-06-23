@@ -18,6 +18,7 @@ function App() {
 
     // Token
     const savedToken = Cookies.get("token");
+    if (savedToken === " ") setIsLogged(false);
     if (savedToken) {
       setToken((prevToken) => {
         // Check if prev Token is not Saved One!
@@ -29,6 +30,7 @@ function App() {
       });
     }
   }, []);
+  console.log(token);
 
   return (
     <div className="app vh-100 bg-dark d-flex justify-content-between flex-column">
