@@ -1,15 +1,27 @@
 import React from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import userLogin from "../API/userLogin";
 
-export default function LoginForm() {
+export default function LoginForm({ setToken, setIsLogged, setLoggedUserId }) {
+  const [error, setError] = useState("");
   const [accountInfo, setAccountInfo] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    userLogin(
+      accountInfo,
+      setIsLogged,
+      setToken,
+      setError,
+      setLoggedUserId,
+      navigate
+    );
 
     setAccountInfo({
       email: "",
@@ -53,7 +65,11 @@ export default function LoginForm() {
             }
           />
         </div>
-        <p style={{ color: "red" }}>Here will be Error Message!</p>
+        {error.length > 0 ? (
+          <p className="text-danger">{error}</p>
+        ) : (
+          <p style={{ height: "20px" }}></p>
+        )}
         <div className="d-grid gap-2">
           <button type="submit" className="btn btn-primary">
             Sign In

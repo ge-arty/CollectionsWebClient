@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import userLogout from "../API/userLogout";
+import getUser from "../API/getUser";
 
-export default function Header() {
+export default function Header({ isLogged, token, userId, setIsLogged }) {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+  console.log(userId, `token ${token}`);
   return (
     <nav
       style={{
@@ -43,30 +45,53 @@ export default function Header() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/myCollection">
+              <NavLink
+                onClick={() => getUser(userId, token)}
+                className="nav-link"
+                to="/myCollection"
+              >
                 My Collection
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/register">
-                Register
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contact">
-                Language change
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contact">
-                Theme change
-              </a>
-            </li>
+            {isLogged ? (
+              <>
+                <li className="nav-item">
+                  <a className="nav-link">Language change</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">Theme change</a>
+                </li>
+                <li className="nav-item">
+                  <button
+                    onClick={() =>
+                      userLogout(token, navigate, userId, setIsLogged)
+                    }
+                    className="nav-link"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/register">
+                    Register
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">Language change</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">Theme change</a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

@@ -85,9 +85,7 @@ export default function RegisterForm() {
           />
         </div>
         {error.length > 0 ? (
-          <p style={{ color: "red" }} className="error">
-            {error}
-          </p>
+          <p className="text-danger">{error}</p>
         ) : (
           <p style={{ height: "20px" }}></p>
         )}
