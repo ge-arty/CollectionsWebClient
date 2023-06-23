@@ -31,9 +31,11 @@ export default async function userLogin(
 
       // Set the isLoggedIn state to true when login is successful
       setIsLogged(true);
+      setLoggedUserId(data._id);
+      localStorage.setItem("isLogged", true);
+      localStorage.setItem("loggedUserId", data._id);
       // Set the token
       setToken(authToken);
-      setLoggedUserId(data._id);
       navigate("/");
       return data; // Return the login data if needed
     } else {

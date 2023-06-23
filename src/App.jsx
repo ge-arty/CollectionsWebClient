@@ -10,39 +10,25 @@ function App() {
   const [loggedUserId, setLoggedUserId] = useState("");
   const [token, setToken] = useState("");
 
-  // useEffect(() => {
-  //   const handleBeforeUnload = async () => {
-  //     try {
-  //       await fetch("https://collectionwebserver.onrender.com/logout", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ online: false }),
-  //       });
-  //     } catch (error) {
-  //       console.error("Error occurred during logout:", error);
-  //       // Handle the error or display an error message
-  //     }
-  //   };
+  useEffect(() => {
+    const savedIsLogged = localStorage.getItem("isLogged");
+    const savedLoggedUserId = localStorage.getItem("loggedUserId");
+    setIsLogged(savedIsLogged === "true");
+    setLoggedUserId(savedLoggedUserId);
 
-  //   window.addEventListener("beforeunload", handleBeforeUnload);
-
-  //   return () => {
-  //     window.removeEventListener("beforeunload", handleBeforeUnload);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   // Getting token from Cookies
-  //   const savedToken = Cookies.get("token");
-  //   if (savedToken) {
-  //     setToken(savedToken);
-  //   }
-
-  //   //  Saving new token into Cookies
-  //   Cookies.set("token", token);
-  // }, [token]);
+    // Token
+    const savedToken = Cookies.get("token");
+    if (savedToken) {
+      setToken((prevToken) => {
+        // Check if prev Token is not Saved One!
+        if (savedToken !== prevToken) {
+          Cookies.set("token", savedToken);
+          return savedToken;
+        }
+        return prevToken;
+      });
+    }
+  }, []);
 
   return (
     <div className="app vh-100 bg-dark d-flex justify-content-between flex-column">
