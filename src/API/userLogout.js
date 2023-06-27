@@ -1,4 +1,10 @@
-export default async function userLogout(token, navigate, userId, setIsLogged) {
+import Cookies from "js-cookie";
+export default async function userLogout(
+  token,
+  navigate,
+  userId,
+  setLoggedUserId
+) {
   try {
     const response = await fetch(
       `https://collectionwebserver.onrender.com/logout/${userId}`,
@@ -12,14 +18,13 @@ export default async function userLogout(token, navigate, userId, setIsLogged) {
       }
     );
     if (response.ok) {
-      setIsLogged(false);
-      localStorage.removeItem("isLogged");
+      Cookies.set("token", "");
+      setLoggedUserId("");
       localStorage.removeItem("loggedUserId");
       navigate("/");
       console.log("Logged out successfully");
     }
   } catch (error) {
     console.error("Error occurred during logout:", error);
-    // Handle the error or display an error message
   }
 }

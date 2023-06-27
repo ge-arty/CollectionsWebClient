@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer
-      className="d-flex justify-content-center align-items-center"
+      className="footer  d-flex justify-content-center align-items-center"
       style={{
         borderTop: "1px solid #fff",
         boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",

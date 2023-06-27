@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import userLogin from "../API/userLogin";
 
-export default function LoginForm({ setToken, setIsLogged, setLoggedUserId }) {
+export default function LoginForm({ setToken, setLoggedUserId }) {
   const [error, setError] = useState("");
   const [accountInfo, setAccountInfo] = useState({
     email: "",
@@ -13,16 +13,7 @@ export default function LoginForm({ setToken, setIsLogged, setLoggedUserId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    userLogin(
-      accountInfo,
-      setIsLogged,
-      setToken,
-      setError,
-      setLoggedUserId,
-      navigate
-    );
-
+    userLogin(accountInfo, setToken, setError, setLoggedUserId, navigate);
     setAccountInfo({
       email: "",
       password: "",

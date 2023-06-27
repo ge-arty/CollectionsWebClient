@@ -10,9 +10,11 @@ export default async function getUser(userId, token) {
         },
       }
     );
+
     if (response.ok) {
       const user = await response.json();
       console.log(user);
+      return user;
     } else {
       console.error("Failed to fetch user data");
     }

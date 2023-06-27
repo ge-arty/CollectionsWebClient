@@ -1,6 +1,5 @@
 export default async function userLogin(
   { email, password },
-  setIsLogged,
   setToken,
   setError,
   setLoggedUserId,
@@ -28,11 +27,7 @@ export default async function userLogin(
       console.log(data);
       // Extract the token and userId from the response
       const authToken = data.token;
-
-      // Set the isLoggedIn state to true when login is successful
-      setIsLogged(true);
       setLoggedUserId(data._id);
-      localStorage.setItem("isLogged", true);
       localStorage.setItem("loggedUserId", data._id);
       // Set the token
       setToken(authToken);

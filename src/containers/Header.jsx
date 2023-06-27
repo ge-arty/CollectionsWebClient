@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import userLogout from "../API/userLogout";
-import getUser from "../API/getUser";
 
-export default function Header({ isLogged, token, userId, setIsLogged }) {
+export default function Header({ token, loggedUserId, setLoggedUserId }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
   return (
     <nav
       style={{
         borderBottom: "1px solid #fff",
         boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
       }}
-      className="navbar navbar-expand-lg navbar-dark pb-4 pt-4"
+      className="navbar navbar-expand-lg navbar-dark pb-4 pt-4 "
     >
       <div className="container">
         <a href="/" className="navbar-brand">
@@ -45,15 +43,11 @@ export default function Header({ isLogged, token, userId, setIsLogged }) {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                onClick={() => getUser(userId, token)}
-                className="nav-link"
-                to="/myCollection"
-              >
-                My Collection
+              <NavLink className="nav-link" to="/dashboard">
+                Dashboard
               </NavLink>
             </li>
-            {isLogged ? (
+            {loggedUserId ? (
               <>
                 <li className="nav-item">
                   <a className="nav-link">Language change</a>
@@ -64,7 +58,7 @@ export default function Header({ isLogged, token, userId, setIsLogged }) {
                 <li className="nav-item">
                   <button
                     onClick={() =>
-                      userLogout(token, navigate, userId, setIsLogged)
+                      userLogout(token, navigate, loggedUserId, setLoggedUserId)
                     }
                     className="nav-link"
                   >
