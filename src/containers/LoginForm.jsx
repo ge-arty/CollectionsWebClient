@@ -30,10 +30,10 @@ export default function LoginForm({ setToken, setLoggedUserId }) {
         borderRadius: "50px",
       }}
     >
-      <h1 style={{ color: "#fff" }}>Login</h1>
+      <h1>Login</h1>
       <form style={{ width: "300px" }} onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }} className="form-group">
-          <label style={{ color: "#FFF" }}>Email</label>
+          <label>Email</label>
           <input
             type="email"
             className="form-control"
@@ -45,7 +45,7 @@ export default function LoginForm({ setToken, setLoggedUserId }) {
           />
         </div>
         <div style={{ marginBottom: "10px" }} className="form-group">
-          <label style={{ color: "#FFF" }}>Password</label>
+          <label>Password</label>
           <input
             type="password"
             className="form-control"

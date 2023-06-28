@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import userLogout from "../API/userLogout";
 
-export default function Header({ token, loggedUserId, setLoggedUserId }) {
+export default function Header({
+  token,
+  loggedUserId,
+  setLoggedUserId,
+  toggle,
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const toggleMenu = () => {
@@ -52,7 +57,7 @@ export default function Header({ token, loggedUserId, setLoggedUserId }) {
                 <li className="nav-item">
                   <a className="nav-link">Language change</a>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" onClick={toggle}>
                   <a className="nav-link">Theme change</a>
                 </li>
                 <li className="nav-item">
@@ -81,7 +86,7 @@ export default function Header({ token, loggedUserId, setLoggedUserId }) {
                 <li className="nav-item">
                   <a className="nav-link">Language change</a>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" onClick={toggle}>
                   <a className="nav-link">Theme change</a>
                 </li>
               </>

@@ -9,18 +9,19 @@ export default function Explore() {
     { id: 5, title: "Collection 5" },
   ];
 
+  // const sortedCollections = user.collections.sort((a, b) => b.createdAt - a.createdAt);
+  // const latestCollections = sortedCollections.slice(0, 5);
+
   return (
     <div className="container">
       <div className="text-center my-5">
-        <h1 className="display-4" style={{ color: "#fff" }}>
+        <h1 className="display-4">
           Сreate your own collection and join our big community!
         </h1>
       </div>
 
       <section>
-        <h2 className="mb-4" style={{ color: "#fff" }}>
-          Latest updates
-        </h2>
+        <h2 className="mb-4">Latest updates</h2>
         <div className="card-deck">
           {latestCollections.map((collection) => (
             <div key={collection.id} className="card mb-4">

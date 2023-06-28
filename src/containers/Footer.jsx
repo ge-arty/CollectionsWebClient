@@ -9,9 +9,7 @@ export default function Footer() {
         boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
       }}
     >
-      <h3 className="m-3" style={{ color: "#FFF" }}>
-        Powered By this Guy
-      </h3>
+      <h3 className="m-3">Powered By this Guy</h3>
       <a
         style={{ fontSize: "32px" }}
         href="https://www.linkedin.com/in/george-arutinyan/"

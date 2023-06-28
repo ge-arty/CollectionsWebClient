@@ -1,4 +1,3 @@
-import useDetectDevice from "./useDetectDevice";
 import useLocalStorage from "./useLocalStorage";
 
 const themeConfig = {
@@ -14,18 +13,13 @@ const themeConfig = {
 
 const useTheme = () => {
   const [theme, setTheme] = useLocalStorage("theme", "light");
-  const deviceType = useDetectDevice();
 
   const toggle = () => {
-    if (deviceType === "desktop") {
-      setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
-    } else {
-      setTheme("light");
-    }
+    setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
   };
 
   return {
-    theme: deviceType === "desktop" ? themeConfig[theme] : themeConfig["light"],
+    theme: themeConfig[theme],
     toggle,
   };
 };

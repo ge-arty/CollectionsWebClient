@@ -34,10 +34,10 @@ export default function RegisterForm() {
         borderRadius: "50px",
       }}
     >
-      <h1 style={{ color: "#fff" }}>Sign Up</h1>
+      <h1>Sign Up</h1>
       <form style={{ width: "300px" }} onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }} className="form-group">
-          <label style={{ color: "#FFF" }}>FirstName</label>
+          <label>FirstName</label>
           <input
             type="text"
             className="form-control"
@@ -49,7 +49,7 @@ export default function RegisterForm() {
           />
         </div>
         <div style={{ marginBottom: "10px" }} className="form-group">
-          <label style={{ color: "#FFF" }}>LastName</label>
+          <label>LastName</label>
           <input
             type="text"
             className="form-control"
@@ -61,7 +61,7 @@ export default function RegisterForm() {
           />
         </div>
         <div style={{ marginBottom: "10px" }} className="form-group">
-          <label style={{ color: "#FFF" }}>Email</label>
+          <label>Email</label>
           <input
             type="email"
             className="form-control"
@@ -73,7 +73,7 @@ export default function RegisterForm() {
           />
         </div>
         <div style={{ marginBottom: "10px" }} className="form-group">
-          <label style={{ color: "#FFF" }}>Password</label>
+          <label>Password</label>
           <input
             type="password"
             className="form-control"

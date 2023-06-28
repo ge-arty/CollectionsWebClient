@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import createCollection from "../API/createCollection";
+import { NavLink } from "react-router-dom";
 
 export default function UserDashboard({ userData, loggedUserId, token }) {
   const [itemData, setItemData] = useState({
@@ -45,7 +46,7 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       {loggedUserId ? (
         <>
           <h1>User Dashboard</h1>
@@ -186,7 +187,17 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
           </div>
         </>
       ) : (
-        <p>Login</p>
+        <div className="container text-center mt-5">
+          <p className="lead display-4">Login to get started</p>
+          <p className="display-5">if(You don't have Account)</p>
+          <NavLink to="/register" className="btn btn-primary btn-lg">
+            Register
+          </NavLink>
+          <p className="display-5">else</p>
+          <NavLink to="/login" className="btn btn-primary btn-lg">
+            Login
+          </NavLink>
+        </div>
       )}
     </div>
   );

@@ -5,12 +5,14 @@ import Footer from "./containers/Footer";
 import { useEffect, useState } from "react";
 import useLocalStorage from "./hooks/useLocalStorage";
 import useCookiesStorage from "./hooks/useCookiesStorage";
+import useTheme from "./hooks/useTheme";
 import getUser from "./API/getUser";
 
 function App() {
   const [loggedUserId, setLoggedUserId] = useLocalStorage("loggedUserId", "");
   const [token, setToken] = useCookiesStorage("token", "");
   const [userData, setUserData] = useState("");
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     console.log(!token);
@@ -35,8 +37,9 @@ function App() {
   }, [loggedUserId]);
 
   return (
-    <div className="app bg-dark">
+    <div className="app" style={theme}>
       <Header
+        toggle={toggle}
         token={token}
         loggedUserId={loggedUserId}
         setLoggedUserId={setLoggedUserId}
