@@ -46,6 +46,7 @@ function App() {
         setToken={setToken}
         setLoggedUserId={setLoggedUserId}
         userData={userData}
+        token={token}
       />
       <Footer />
     </div>

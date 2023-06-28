@@ -26,7 +26,7 @@ export default function RegisterForm() {
 
   return (
     <div
-      className="container min-w-100 d-flex justify-content-center align-items-center flex-column p-5"
+      className="container min-w-100 d-flex justify-content-center align-items-center flex-column p-5 mt-4 "
       style={{
         maxWidth: "500px",
         border: "1px solid #fff",

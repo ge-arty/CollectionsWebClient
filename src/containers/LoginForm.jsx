@@ -22,7 +22,7 @@ export default function LoginForm({ setToken, setLoggedUserId }) {
 
   return (
     <div
-      className="container min-w-25 d-flex justify-content-center align-items-center flex-column p-5"
+      className="container min-w-25 d-flex justify-content-center align-items-center flex-column p-5  mt-5"
       style={{
         maxWidth: "400px",
         border: "1px solid #fff",

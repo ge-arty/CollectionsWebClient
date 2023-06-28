@@ -10,6 +10,7 @@ export default function Content({
   setLoggedUserId,
   userData,
   loggedUserId,
+  token,
 }) {
   return (
     <div className="container content-main">
@@ -25,7 +26,11 @@ export default function Content({
         <Route
           path="/dashboard"
           element={
-            <UserDashboard userData={userData} loggedUserId={loggedUserId} />
+            <UserDashboard
+              userData={userData}
+              loggedUserId={loggedUserId}
+              token={token}
+            />
           }
         />
       </Routes>

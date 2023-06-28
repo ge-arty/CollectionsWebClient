@@ -1,8 +1,4 @@
-export default async function createCollection(
-  userId,
-  { theme, name, description, image },
-  token
-) {
+export default async function createCollection(userId, itemData, token) {
   try {
     const response = await fetch(
       "https://collectionwebserver.onrender.com/createCollection",
@@ -12,7 +8,7 @@ export default async function createCollection(
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId, theme, name, description, image }),
+        body: JSON.stringify({ userId, itemData }),
       }
     );
     if (response.ok) {
@@ -23,7 +19,6 @@ export default async function createCollection(
       throw new Error("Collection create did fail!");
     }
   } catch (error) {
-    setError(error.message);
     console.error(error);
   }
 }
