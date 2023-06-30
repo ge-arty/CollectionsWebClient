@@ -12,7 +12,7 @@ const themeConfig = {
 };
 
 const useTheme = () => {
-  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [theme, setTheme] = useLocalStorage("theme", "dark");
 
   const toggle = () => {
     setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import createCollection from "../API/createCollection";
 import { NavLink } from "react-router-dom";
-import UploadWidget from "../components/UploadWidget";
 
 export default function UserDashboard({ userData, loggedUserId, token }) {
   const [itemData, setItemData] = useState({
@@ -135,7 +134,7 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
                     id="image"
                     onChange={handleImageChange}
                   /> */}
-                  <UploadWidget />
+                  {/* <UploadWidget /> */}
                 </div>
                 {itemData.customFields.map((field, index) => (
                   <div key={index} className="form-group mt-2">
