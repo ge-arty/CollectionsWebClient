@@ -1,19 +1,32 @@
 import React, { useState } from "react";
 import createCollection from "../API/createCollection";
 import { NavLink } from "react-router-dom";
+import UploadWidget from "../components/UploadWidget";
 
 export default function UserDashboard({ userData, loggedUserId, token }) {
   const [itemData, setItemData] = useState({
     theme: "Books",
     name: "",
     description: "",
-    image: "",
+    image: null,
     customFields: [],
   });
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     createCollection(loggedUserId, itemData, token);
+
+    setItemData({
+      theme: "Books",
+      name: "",
+      description: "",
+      image: null,
+      customFields: [],
+    });
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
   };
 
   const handleAddField = () => {
@@ -116,18 +129,13 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
                 </div>
                 <div className="form-group">
                   <label htmlFor="image">Image</label>
-                  <input
-                    type="text"
+                  {/* <input
+                    type="file"
                     className="form-control"
                     id="image"
-                    value={itemData.image}
-                    onChange={(event) =>
-                      setItemData((prevItemData) => ({
-                        ...prevItemData,
-                        image: event.target.value,
-                      }))
-                    }
-                  />
+                    onChange={handleImageChange}
+                  /> */}
+                  <UploadWidget />
                 </div>
                 {itemData.customFields.map((field, index) => (
                   <div key={index} className="form-group mt-2">
@@ -178,7 +186,7 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
                   >
                     Add Field
                   </button>
-                  <button type="submit" className="btn btn-primary ">
+                  <button type="submit" className="btn btn-primary">
                     Create
                   </button>
                 </div>
