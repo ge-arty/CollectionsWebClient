@@ -32,15 +32,23 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
   };
 
   const setFileToBase = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      const base64Data = reader.result;
-      setItemData((prevItemData) => ({
-        ...prevItemData,
-        image: base64Data,
-      }));
-    };
+    const extension = file.name.split(".").pop().toLowerCase();
+    const supportedExtensions = ["jpg", "jpeg", "png", "gif"];
+
+    if (supportedExtensions.includes(extension)) {
+      console.log(true);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        const base64Data = reader.result;
+        setItemData((prevItemData) => ({
+          ...prevItemData,
+          image: base64Data,
+        }));
+      };
+    } else {
+      console.log("Invalid file. Please select an image file.");
+    }
   };
 
   const handleAddField = () => {
