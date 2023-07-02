@@ -1,19 +1,17 @@
 export default async function createCollection(userId, itemData, token) {
   try {
-    const formData = new FormData();
-    formData.append("file", itemData.image);
     console.log(itemData.image);
-    console.log(formData);
 
     const url = "https://collectionwebserver.onrender.com/createCollection";
     const response = await fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
-      body: { userId, formData },
+      body: JSON.stringify({ userId, itemData }),
     });
-    console.log(formData);
+
     if (response.ok) {
       const data = await response.json();
       console.log(data);

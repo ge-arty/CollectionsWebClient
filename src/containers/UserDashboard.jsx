@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import createCollection from "../API/createCollection";
 import { NavLink } from "react-router-dom";
 
 export default function UserDashboard({ userData, loggedUserId, token }) {
+  const inputRef = useRef(null);
   const [itemData, setItemData] = useState({
     theme: "Books",
     name: "",
@@ -22,10 +23,24 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
       image: null,
       customFields: [],
     });
+
+    inputRef.current.value = null;
   };
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
+    setFileToBase(event.target.files[0]);
+  };
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const base64Data = reader.result;
+      setItemData((prevItemData) => ({
+        ...prevItemData,
+        image: base64Data,
+      }));
+    };
   };
 
   const handleAddField = () => {
@@ -128,13 +143,13 @@ export default function UserDashboard({ userData, loggedUserId, token }) {
                 </div>
                 <div className="form-group">
                   <label htmlFor="image">Image</label>
-                  {/* <input
+                  <input
                     type="file"
                     className="form-control"
                     id="image"
+                    ref={inputRef}
                     onChange={handleImageChange}
-                  /> */}
-                  {/* <UploadWidget /> */}
+                  />
                 </div>
                 {itemData.customFields.map((field, index) => (
                   <div key={index} className="form-group mt-2">
